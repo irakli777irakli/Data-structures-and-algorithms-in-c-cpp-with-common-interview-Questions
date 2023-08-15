@@ -25,11 +25,35 @@ void perm(char s[], int k){
 
 }
 
+/*
+recursive calls are dependent on proccesseds `p` length
+
+*/
+void permutation2(string p, string up) {
+    if(up.empty()) {
+        cout << p << endl;
+        return;
+    }
+
+    char ch = up.at(0);
+    for (int i = 0; i <= p.length(); i++)
+    {
+        string f = p.substr(0,i);
+        string s = p.substr(i,p.length());
+        permutation2(f+ch+s,up.substr(1));
+    }
+    
+
+
+}
+
 
 int main(){
 
     char s[] = "ABC";
     perm(s,0);
+
+    permutation2("","abc");
 
     return 0;
 }
